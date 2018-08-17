@@ -1,0 +1,32 @@
+from selenium import webdriver
+import time
+
+driver = webdriver.Chrome("C:/Users/jmahammed/PycharmProjects/testsel/drivers/chromedriver.exe")
+driver.set_page_load_timeout("20")
+driver.get("http://gmail.com")
+#driver.maximize_window()
+driver.find_element_by_xpath("//input[@type='email']").send_keys('reshmataj1708')
+driver.find_element_by_id("identifierNext").click()
+time.sleep(5)
+driver.find_element_by_xpath("//input[@type='password']").send_keys("Bitter@1234")
+driver.find_element_by_id("passwordNext").click()
+time.sleep(5)
+driver.find_element_by_xpath("//*[@id=':hd']/div/div").click()
+time.sleep(5)
+driver.find_element_by_xpath("//*[@id=':mh']")
+
+driver.find_element_by_xpath("//*[@id=':mt']").send_keys("shirisha238p@gmail.com")
+
+driver.find_element_by_xpath("//*[@id=':mb']").send_keys("test mail")
+
+driver.find_element_by_xpath("//*[@id=':ng']").send_keys("Hi,Hw are you?")
+
+driver.find_element_by_xpath("//*[@id=':19s']")
+
+driver.find_element_by_xpath("//*[@id=':m1']").click()
+
+driver.find_element_by_xpath("//a[contains(@title,'Google Account')]").click()
+time.sleep(5)
+driver.find_element_by_link_text("Sign out").click()
+time.sleep(5)
+driver.close()

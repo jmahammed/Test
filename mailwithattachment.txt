@@ -1,0 +1,51 @@
+import smtplib
+import base64
+
+filename = "C:/Users/jmahammed/Desktop/base.txt"
+fo = open(filename,"rb")
+filecontent = fo.read()
+encodedcontent = base64.b64encode(filecontent)
+
+recipient = "reshmataj.8@gmail.com"
+sender = "reshmataj1708@gmail.com"
+
+marker = "AUNIQUEMARKER"
+
+body ="""
+this is a test email to send an attachmetn.
+"""
+part1 = """From: From Reshma <reshmataj1708@gmail.com>
+To: To Reshma<reshmataj1708@gmail.com>
+subject: sending Attachment
+MIME-version:1.0
+Content-Type: multipart/mixed; boundary = %s
+--%s
+""" % (marker,marker)
+
+part2 = """Content-Type: text/plain
+Content-Transfer-Encoding:8bit
+%s
+--%s
+""" % (body,marker)
+part3 = """Content-Type: multipart/mixed; name=\"%s\"
+Content-Transfer-Encoding:base64
+Content-Disposition: attachment; filename=%s
+
+%s
+--%s--
+""" %(filename,filename,encodedcontent,marker)
+message = part1+part2+part3
+
+try:
+        mail = smtplib.SMTP('smtp.gmail.com', 587)
+        mail.ehlo()
+        mail.starttls()
+        mail.login(user='reshmataj1708', password='Bitter@1234')
+        mail.sendmail(sender,recipient,message)
+        print("success")
+except Exception:
+        print("Error:Unable to send mail")
+
+
+
+
