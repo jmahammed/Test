@@ -7,7 +7,7 @@ filecontent = fo.read()
 encodedcontent = base64.b64encode(filecontent)
 
 recipient = "reshmataj.8@gmail.com"
-sender = "reshmataj1708@gmail.com"
+sender = "reshmataj@gmail.com"
 
 marker = "AUNIQUEMARKER"
 
